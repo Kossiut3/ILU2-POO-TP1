@@ -77,5 +77,16 @@ public class Etal {
 	public boolean contientProduit(String produit) {
 		return produit.equals(this.produit);
 	}
+	
+	
+		
+	
+	
+
+	
+	
+	
+	
+	
 
 }
