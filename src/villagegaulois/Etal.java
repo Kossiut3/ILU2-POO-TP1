@@ -38,7 +38,8 @@ public class Etal {
 		nomGaulois = vendeur.getNom(); 
 		}catch(NullPointerException e) {e.printStackTrace();
 		System.out.println("L'etal n as pas été occupé précédemment\n");
-		return "";}
+		return "";
+		}
 		
 		StringBuilder chaine = new StringBuilder(
 				"Le vendeur " + nomGaulois + " quitte son étal, ");
@@ -62,6 +63,20 @@ public class Etal {
 
 	public String acheterProduit(int quantiteAcheter, Gaulois acheteur) {
 		String nomGaulois = vendeur.getNom();
+		try {
+			acheteur.getNom();
+		}catch(NullPointerException e){
+			e.printStackTrace();
+			System.out.println("L'acheteur ne doit pas etre null");
+			return "";
+		}
+		if (quantiteAcheter < 1) {
+			throw new IllegalArgumentException("la quantité doit etre plus grande "
+					+ "ou egale a 1");
+		}
+		if(!etalOccupe) {
+			throw new IllegalStateException("Vous essayer d acheter a un etal non occupe");
+		}
 		
 		StringBuilder chaine = new StringBuilder();
 		chaine.append(acheteur.getNom() + " veut acheter " + quantiteAcheter
